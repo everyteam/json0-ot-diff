@@ -66,6 +66,12 @@ var diff = function(input, output, path = []) {
     return [op];
   }
 
+  if (typeof output === 'number' && typeof input === 'number') {
+    var op = { p: path };
+    op['na'] = output - input;
+    return [op];
+  }
+
   // If either of input/output is a string, there is no need to perform deep recursive calls to
   // figure out what to do. We can just replace the objects.
   if (typeof output === 'string' || typeof input === 'string') {
