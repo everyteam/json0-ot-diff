@@ -127,15 +127,15 @@ var tests = [
     {
       value: -1
     }
+  ],
+  [
+    {
+      value: 0
+    },
+    {
+      value: ['string']
+    }
   ]
-  // [
-  //   {
-  //     value: 0
-  //   },
-  //   {
-  //     value: ['string']
-  //   }
-  // ]
 ];
 
 // Test whether jsondiff modifies the input/output (it shouldn't).

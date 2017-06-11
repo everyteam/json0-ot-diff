@@ -72,9 +72,15 @@ var diff = function(input, output, path = []) {
     return [op];
   }
 
-  // If either of input/output is a string, there is no need to perform deep recursive calls to
-  // figure out what to do. We can just replace the objects.
-  if (typeof output === 'string' || typeof input === 'string') {
+  // This should do a string OT operation instead of what it is doing.
+  if (typeof output === 'string' && typeof input === 'string') {
+    var op = { p: path };
+    op[isObject ? 'od' : 'ld'] = input;
+    op[isObject ? 'oi' : 'li'] = output;
+    return [op];
+  }
+
+  if (isScalar(input) || isScalar(output)) {
     var op = { p: path };
     op[isObject ? 'od' : 'ld'] = input;
     op[isObject ? 'oi' : 'li'] = output;
@@ -114,6 +120,12 @@ var diff = function(input, output, path = []) {
 
 var optimizedDiff = function(input, output) {
   return optimize(diff(input, output));
+};
+
+var isScalar = function(o) {
+  return (
+    typeof o === 'string' || typeof o === 'number' || typeof o === 'boolean'
+  );
 };
 
 module.exports = optimizedDiff;
