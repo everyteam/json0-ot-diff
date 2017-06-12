@@ -135,7 +135,10 @@ var tests = [
     {
       value: ['string']
     }
-  ]
+  ],
+  [['asdf'], ['ar']],
+  [['orange'], ['the banana is an orange']],
+  [['purple'], ['p1i2r3p4l5e6']]
 ];
 
 // Test whether jsondiff modifies the input/output (it shouldn't).
