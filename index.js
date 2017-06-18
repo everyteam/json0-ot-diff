@@ -10,7 +10,8 @@ var optimize = function(ops) {
 	after each other, and then consolidate them.
 	 */
   for (var i = 0, l = ops.length - 1; i < l; ++i) {
-    var a = ops[i], b = ops[i + 1];
+    var a = ops[i],
+      b = ops[i + 1];
 
     // The ops must have same path.
     if (!equal(a.p.slice(0, -1), b.p.slice(0, -1))) {
@@ -108,8 +109,7 @@ var diff = function(input, output, path = []) {
       newOps.forEach(function(op) {
         var opParentPath = op.p.slice(0, -1);
         if (equal(path, opParentPath)) {
-          if ('li' in op) offset++;
-          if ('ld' in op) offset--;
+          if ('ld' in op && !('li' in op)) offset--;
         }
         ops.push(op);
       });

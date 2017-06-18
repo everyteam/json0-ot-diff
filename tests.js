@@ -138,12 +138,14 @@ var tests = [
   ],
   [['asdf'], ['ar']],
   [['orange'], ['the banana is an orange']],
-  [['purple'], ['p1i2r3p4l5e6']]
+  [['purple'], ['p1i2r3p4l5e6']],
+  [['a'], ['a', 'b', 'c']]
 ];
 
 // Test whether jsondiff modifies the input/output (it shouldn't).
 tests.forEach(function([input, output]) {
-  var cinput = clone(input), coutput = clone(output);
+  var cinput = clone(input),
+    coutput = clone(output);
   jsondiff(input, output);
   assert.deepEqual(cinput, input);
   assert.deepEqual(coutput, output);
