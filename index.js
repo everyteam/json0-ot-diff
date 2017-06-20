@@ -84,9 +84,9 @@ var diff = function(input, output, path = []) {
         ops.push({ p: idx, d: d[i].value });
       } else if (d[i].added) {
         ops.push({ p: idx, i: d[i].value });
-        idx += d[i].count;
+        idx += [...d[i].value].length;
       } else {
-        idx += d[i].count;
+        idx += [...d[i].value].length;
       }
     }
     return [{ p: path, t: 'text0', o: ops }];

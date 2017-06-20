@@ -14,6 +14,10 @@ diff@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.2.0.tgz#c9ce393a4b7cbd0b058a725c93df299027868ff9"
 
-ot-json0@^1.0.1:
+ot-json0@loominc/json0:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ot-json0/-/ot-json0-1.0.1.tgz#3edfe7b73bd1f192c0737d332050e23515be354a"
+  resolved "https://codeload.github.com/loominc/json0/tar.gz/709b371d5bf32418ec7261a999fada9a773124eb"
+
+runes@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/runes/-/runes-0.4.0.tgz#791e605ac73c0c8eff17d631e12c8d8137f35b8a"
