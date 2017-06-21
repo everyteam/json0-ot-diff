@@ -140,7 +140,10 @@ var tests = [
   [['orange'], ['the banana is an orange']],
   [['purple'], ['p1i2r3p4l5e6']],
   [['a'], ['a', 'b', 'c']],
-  ['😀 ', '😀']
+  ['😀 ', '😀'],
+  ['😀 ', ' '],
+  ['😀😇😀 😀😇😀', '😀a😀 😀😀'],
+  ['😀😀 😀😇😀', '😀😇😀 😀😀']
 ];
 
 // Test whether jsondiff modifies the input/output (it shouldn't).
@@ -156,13 +159,13 @@ tests.forEach(function([input, output]) {
 tests.forEach(function([input, output]) {
   var ops = jsondiff(input, output);
   ops.forEach(function(op) {
-    assert.doesNotThrow(
-      function() {
-        input = json0.apply(input, [op]);
-      },
-      null,
-      'json0 could not apply transformation'
-    );
+    // assert.doesNotThrow(
+    //   function() {
+    input = json0.apply(input, [op]);
+    //   },
+    //   null,
+    //   'json0 could not apply transformation'
+    // );
   });
   assert.deepEqual(input, output);
 });

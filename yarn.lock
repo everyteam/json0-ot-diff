@@ -10,10 +10,6 @@ deep-equal@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.0.1.tgz#f5d260292b660e084eff4cdbc9f08ad3247448b5"
 
-diff@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/diff/-/diff-3.2.0.tgz#c9ce393a4b7cbd0b058a725c93df299027868ff9"
-
 ot-json0@loominc/json0:
   version "1.0.1"
   resolved "https://codeload.github.com/loominc/json0/tar.gz/709b371d5bf32418ec7261a999fada9a773124eb"

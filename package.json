@@ -27,7 +27,6 @@
   "dependencies": {
     "clone": "^1.0.2",
     "deep-equal": "^1.0.1",
-    "diff": "^3.2.0",
     "ot-json0": "loominc/json0",
     "runes": "^0.4.0"
   }

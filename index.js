@@ -2,7 +2,7 @@
 
 var equal = require('deep-equal');
 var json0 = require('ot-json0/lib/json0');
-var jsdiff = require('diff');
+var characterDiff = require('./diff');
 
 var optimize = function(ops) {
   /*
@@ -77,16 +77,16 @@ var diff = function(input, output, path = []) {
   // This should do a string OT operation instead of what it is doing.
   if (typeof output === 'string' && typeof input === 'string') {
     var ops = [];
-    var d = jsdiff.diffChars(input, output);
+    var d = characterDiff(input, output);
     var idx = 0;
     for (var i = 0; i < d.length; i++) {
       if (d[i].removed) {
         ops.push({ p: idx, d: d[i].value });
       } else if (d[i].added) {
         ops.push({ p: idx, i: d[i].value });
-        idx += [...d[i].value].length;
+        idx += d[i].count;
       } else {
-        idx += [...d[i].value].length;
+        idx += d[i].count;
       }
     }
     return [{ p: path, t: 'text0', o: ops }];
