@@ -12,7 +12,7 @@ deep-equal@^1.0.1:
 
 ot-json0@loominc/json0:
   version "1.0.1"
-  resolved "https://codeload.github.com/loominc/json0/tar.gz/709b371d5bf32418ec7261a999fada9a773124eb"
+  resolved "https://codeload.github.com/loominc/json0/tar.gz/320c2b09f5aede7cea44daab4e4b446453a93223"
 
 runes@^0.4.0:
   version "0.4.0"
