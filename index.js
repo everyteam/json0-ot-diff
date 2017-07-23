@@ -44,7 +44,7 @@ var optimize = function(ops) {
   return ops;
 };
 
-var diff = function(input, output, path = []) {
+var diff = function(input, output, path = [], treatAsStringOp) {
   // If the last element of the path is a string, that means we're looking at a key, rather than
   // a number index. Objects use keys, so the target for our insertion/deletion is an object.
   var isObject = typeof path[path.length - 1] === 'string';
@@ -75,7 +75,7 @@ var diff = function(input, output, path = []) {
   }
 
   // This should do a string OT operation instead of what it is doing.
-  if (typeof output === 'string' && typeof input === 'string') {
+  if ((treatAsStringOp || treatAsStringOp === undefined) && typeof output === 'string' && typeof input === 'string') {
     var ops = [];
     var d = characterDiff(input, output);
     var idx = 0;
@@ -105,7 +105,7 @@ var diff = function(input, output, path = []) {
     var ops = [];
     var offset = 0;
     for (var i = 0; i < l; ++i) {
-      var newOps = diff(input[i], output[i], [...path, i + offset]);
+      var newOps = diff(input[i], output[i], [...path, i + offset], true);
       newOps.forEach(function(op) {
         var opParentPath = op.p.slice(0, -1);
         if (equal(path, opParentPath)) {
@@ -123,7 +123,7 @@ var diff = function(input, output, path = []) {
   ).sort();
 
   keys.forEach(function(key) {
-    var newOps = diff(input[key], output[key], [...path, key]);
+    var newOps = diff(input[key], output[key], [...path, key], false);
     ops = ops.concat(newOps);
   });
   return ops;
