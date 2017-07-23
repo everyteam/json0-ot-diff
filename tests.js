@@ -214,7 +214,6 @@ tests.forEach(function([input, output, expectedOps]) {
 // Actual tests
 tests.forEach(function([input, output]) {
   var ops = jsondiff(input, output);
-  var util = require("util");
   ops.forEach(function(op) {
     // assert.doesNotThrow(
     //   function() {
@@ -226,7 +225,5 @@ tests.forEach(function([input, output]) {
   });
   assert.deepEqual(input, output);
 });
-
-
 
 console.log('No errors!');
