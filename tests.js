@@ -200,20 +200,17 @@ tests.forEach(function([input, output]) {
   assert.deepEqual(coutput, output);
 });
 
-// Expected ops for each test
+// Actual tests
 tests.forEach(function([input, output, expectedOps]) {
+  var ops = jsondiff(input, output);
+
+  // Expected ops for each test, if they exist
   if (expectedOps) {
-    var ops = jsondiff(input, output);
-    // console.log(require("util").inspect(ops, { showHidden: true, depth: null }));
     expectedOps.forEach(function(expectedOp, opIndex) {
 	    assert.deepEqual(ops[opIndex], expectedOp);
     });
   }
-});
 
-// Actual tests
-tests.forEach(function([input, output]) {
-  var ops = jsondiff(input, output);
   ops.forEach(function(op) {
     // assert.doesNotThrow(
     //   function() {
